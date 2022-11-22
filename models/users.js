@@ -17,7 +17,8 @@ export async function createUser(user) {
 
 export async function patchUser(id, updated) {
   const result = await query(
-    `UPDATE users SET name = ${updated.name} WHERE id = ${id} RETURNING *`
+    `UPDATE users SET name = $1 WHERE id = $2 RETURNING *`,
+    [updated.name, id]
   );
   const updatedUser = result.rows;
   return updatedUser;
