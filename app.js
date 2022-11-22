@@ -1,7 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 
-//import /*router*/ from /*filepath*/
+import postRouter from './routes/posts.js'
 
 const app = express()
 const PORT = process.env.PORT
@@ -10,7 +10,7 @@ app.use(morgan('dev'))
 app.use(express.static('public'))
 app.use(express.json())
 
-// example app.use('/api/countries', crouter)
+app.use('/api/posts', postRouter)
 // example app.use('/api/cities', router)
 
 app.listen(PORT, function () {
