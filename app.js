@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 
 import postRouter from "./routes/posts.js";
 import usersRouter from "./routes/users.js";
@@ -11,6 +12,7 @@ const PORT = process.env.PORT;
 app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/posts", postRouter);
 app.use("/api/users", usersRouter);
