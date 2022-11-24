@@ -32,5 +32,5 @@ postRouter.post("/", async function (req, res) {
   postRouter.delete("/:id", async function (req, res) {
     const id = req.params.id;
     const result = await deletePost(id);
-    res.json({ success: true, payload: result });
+    res.status(200).json({ success: true, payload: result });
   });

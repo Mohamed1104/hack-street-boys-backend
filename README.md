@@ -5,6 +5,8 @@ npm install nodemon
 npm install pg
 npm install dotenv --save
 npm i morgan
+npm i supertest
+npm i jest
 
 sql url: postgres://kimylvwv:rt4QrJD3_0IF1MRCRgpK-b_kdYiXfjAu@lucky.db.elephantsql.com/kimylvwv
 
