@@ -39,6 +39,32 @@ test("POST /api/posts", async function(){
     expect(response.status).toEqual(200);
 })
 
+
+         
+       
+test("Patch /api/posts", async function(){
+            let updatedID =carryId;
+            let userid = 1;
+            let posttext = "poster patch test";
+            let weeknumber = 2;
+            let testtopic = "testing patch"
+             const response = await request(app).patch(`/api/posts/${updatedID}`).send({ user_id: userid,
+                post_text: posttext, week_number: weeknumber, topic: testtopic});
+             let resp = (response.body)
+             expect(response.status).toBe(200);
+             expect(resp).toStrictEqual({
+                success: true,
+                payload: [{
+                    id: expect.any(Number),
+                    user_id: userid,
+                    post_text: posttext,
+                    week_number: weeknumber,
+                    topic: testtopic
+                }]
+             })
+             
+            })
+           
 test("DELETE /api/posts", async function(){
         let deletedId =carryId;
          const response = await request(app).del(`/api/posts/${deletedId}`);
@@ -46,39 +72,6 @@ test("DELETE /api/posts", async function(){
          console.log(resp)
          expect(response.status).toBe(200);
          expect(resp).toStrictEqual({
-          success: true,
-           // payload: [
-            //   {
-            //     id: deletedId,
-            //     user_id: expect.any(Number),
-            //     post_text: expect.any(String),
-            //     week_number: expect.any(Number),
-            //     topic: expect.any(String)
-            // }
-          //],
-            
-            
+          success: true,   
          })
-         
         })
-       
-// test("Patch /api/posts", async function(){
-//             let updatedID =3;
-//             let tweeterData = "tweeter PUT supertest Test";
-//             let tweetData = "testing PUT apitest";
-//              const response = await request(app).put(`/api/tweets/${updatedID}`).send({ tweeter: tweeterData,
-//                 tweet: tweetData});;
-//              let resp = (response.body)
-//              expect(response.status).toBe(200);
-//              expect(resp).toStrictEqual({
-//                 payload: {
-//                     tweet_id: updatedID,
-//                     tweeter: expect.any(String),
-//                     tweet: expect.any(String)
-//                 },
-//                 success: true,
-                
-//              })
-             
-//             })
-           
